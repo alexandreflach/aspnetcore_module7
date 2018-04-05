@@ -14,7 +14,8 @@ namespace StoreBuild.Web.Controllers
     {
         private readonly CategoryStorer _categoryStorer;
 
-        public CategoryController(CategoryStorer categoryStorer){
+        public CategoryController(CategoryStorer categoryStorer)
+        {
             _categoryStorer = categoryStorer;
         }
 

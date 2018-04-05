@@ -33,7 +33,7 @@ namespace StoreBuild.Web
             app.Use(async (context, next) =>
             {
                 await next.Invoke();
-                var unitOfwork = (IUnitOfWork)context.RequestServices.GetService(typeof(IUnitOfWork));
+                var unitOfwork = (IUnitOfWork)context.RequestServices.GetService<IUnitOfWork>();
                 await unitOfwork.Commit();
             });
 
