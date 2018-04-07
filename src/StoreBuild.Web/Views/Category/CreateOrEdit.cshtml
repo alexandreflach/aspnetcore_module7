@@ -11,22 +11,27 @@
         <a href="/Category" class="btn btn-primary">Voltar</a>
     </div>
 </div>
-<form id="form" class="row form-horizontal" asp-action="CreateOrEdit" asp-controller="Category" 
-    data-ajax="true" data-ajax-method="POST" data-ajax-failure="formOnFail" data-ajax-success="window.location = '/Category'"
-    asp-anti-forgery>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Nome</label>
-        <div class="col-md-8">
-            <input type="text" class="form-control" asp-for="Name">    
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+
+<div class="row form-wrapper">
+    <div class="col-md-12">
+        <form id="form" class="row form-horizontal" asp-action="CreateOrEdit" asp-controller="Category" 
+            data-ajax="true" data-ajax-method="POST" data-ajax-failure="formOnFail" data-ajax-success="window.location = '/Category'"
+            asp-anti-forgery>
+            <input type="hidden" class="form-control" asp-for="Id">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Nome</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" asp-for="Name">    
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                    <button class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-8">
-            <button class="btn btn-success">Salvar</button>
-        </div>
-    </div>
-</form>
 </div>
 
 <!-- https://github.com/godinis22/Curso  -->

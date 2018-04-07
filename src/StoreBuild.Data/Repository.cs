@@ -1,4 +1,5 @@
 using StoreBuild.Domain;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StoreBuild.Data
@@ -7,14 +8,22 @@ namespace StoreBuild.Data
     {
         private readonly ApplicationDbContext _context;
 
-        public Repository(ApplicationDbContext context){
+        public Repository(ApplicationDbContext context)
+        {
             _context = context;
         }
-        public TEntity GetById(int id){
+        public TEntity GetById(int id)
+        {
             return _context.Set<TEntity>().SingleOrDefault(e => e.Id == id);
         }
 
-        public void Save(TEntity entity){
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _context.Set<TEntity>().AsEnumerable();
+        }
+
+        public void Save(TEntity entity)
+        {
             _context.Set<TEntity>().Add(entity);
             _context.SaveChanges();
         }
