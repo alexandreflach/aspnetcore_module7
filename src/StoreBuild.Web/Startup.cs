@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StoreBuild.DI;
 using StoreBuild.Domain;
+using StoreBuild.Web.Filters;
 
 namespace StoreBuild.Web
 {
@@ -24,7 +25,9 @@ namespace StoreBuild.Web
         public void ConfigureServices(IServiceCollection services)
         {
             Bootstrap.Configure(services, Configuration.GetSection("ConnectionString")["DefaultConnection"]);
-            services.AddMvc();
+            services.AddMvc( config =>{
+                config.Filters.Add(typeof(CustomExceptionFilter));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

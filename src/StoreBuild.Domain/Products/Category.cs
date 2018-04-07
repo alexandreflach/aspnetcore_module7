@@ -27,6 +27,8 @@ namespace StoreBuild.Domain.Products
         {
             DomainException.When(string.IsNullOrEmpty(name), "Name is required");
 
+            DomainException.When(name.Length < 3, "Name is length less 3");
+
             Name = name;
         }
     }

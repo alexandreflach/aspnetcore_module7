@@ -11,7 +11,9 @@
         <a href="/Category" class="btn btn-primary">Voltar</a>
     </div>
 </div>
-<form class="row form-horizontal" asp-action="CreateOrEdit" asp-controller="Category" asp-anti-forgery asp-action="POST">
+<form id="form" class="row form-horizontal" asp-action="CreateOrEdit" asp-controller="Category" 
+    data-ajax="true" data-ajax-method="POST" data-ajax-failure="formOnFail" data-ajax-success="window.location = '/Category'"
+    asp-anti-forgery>
     <div class="form-group">
         <label class="col-md-2 control-label">Nome</label>
         <div class="col-md-8">
@@ -32,4 +34,5 @@
 @section Scripts {
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.4/jquery.unobtrusive-ajax.min.js"></script>
 }
