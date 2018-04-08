@@ -1,0 +1,65 @@
+﻿
+@model StoreBuild.Web.ViewsModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+<div class="row header">
+    <div class="col-md-12">
+        <h3>Categoria</h3>
+        <a href="/Product" class="btn btn-primary">Voltar</a>
+    </div>
+</div>
+
+<div class="row form-wrapper">
+    <div class="col-md-12">
+        <form id="form" class="row form-horizontal" asp-action="CreateOrEdit" asp-controller="Product" 
+            data-ajax="true" data-ajax-method="POST" data-ajax-failure="formOnFail" data-ajax-success="window.location = '/Product'"
+            asp-anti-forgery>
+            <input type="hidden" class="form-control" asp-for="Id">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Nome</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" asp-for="Name">    
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Categoria</label>
+                <div class="col-md-8">
+                    <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(@Model.Categories, "Id", "Name"))">
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Preço</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" asp-for="Price">    
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Preço</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" asp-for="StockQuantity">    
+                    <span asp-validation-for="StockQuantity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                    <button class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- https://github.com/godinis22/Curso  -->
+
+@section Scripts {
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.4/jquery.unobtrusive-ajax.min.js"></script>
+}

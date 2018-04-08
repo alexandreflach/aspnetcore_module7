@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using StoreBuild.Data;
+using StoreBuild.Data.Contexts;
 using System;
 
 namespace StoreBuild.Data.Migrations
@@ -30,6 +30,33 @@ namespace StoreBuild.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("StoreBuild.Domain.Products.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CategoryId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<decimal>("StockQuantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("StoreBuild.Domain.Products.Product", b =>
+                {
+                    b.HasOne("StoreBuild.Domain.Products.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,9 @@
+using StoreBuild.Data.Contexts;
 using StoreBuild.Domain;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StoreBuild.Data
+namespace StoreBuild.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
@@ -12,12 +13,12 @@ namespace StoreBuild.Data
         {
             _context = context;
         }
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             return _context.Set<TEntity>().SingleOrDefault(e => e.Id == id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> All()
         {
             return _context.Set<TEntity>().AsEnumerable();
         }

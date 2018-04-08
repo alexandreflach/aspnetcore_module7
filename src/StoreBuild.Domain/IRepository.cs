@@ -6,7 +6,7 @@ namespace StoreBuild.Domain
     {
         TEntity GetById(int id);
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> All();
 
         void Save(TEntity entity);
     }

@@ -13,20 +13,20 @@ namespace StoreBuild.Domain.Products
             _categoryRepository = categoryRepository;
         }
         
-        public void Store(ProductDto dto)
+        public void Store(int id, string name, int categoryId, decimal price, decimal stockQuantity)
         {
-            var category = _categoryRepository.GetById(dto.CategoryId);
+            var category = _categoryRepository.GetById(categoryId);
             DomainException.When(category == null, "Category Invalid");
 
-            var product = _productRepository.GetById(dto.Id);
+            var product = _productRepository.GetById(id);
             if (product == null)
             {
-                product = new Product(dto.Name, category, dto.Price, dto.StockQuantity);
+                product = new Product(name, category, price, stockQuantity);
                 _productRepository.Save(product);
             }
             else
             {
-                product.Update(dto.Name, category, dto.Price, dto.StockQuantity);
+                product.Update(name, category, price, stockQuantity);
             }
         }
     }

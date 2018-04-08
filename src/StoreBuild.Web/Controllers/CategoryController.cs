@@ -27,7 +27,7 @@ namespace StoreBuild.Web.Controllers
 
         public IActionResult Index()
         {
-            var categories = _categoryRepository.GetAll();
+            var categories = _categoryRepository.All();
             var viewModel = categories.Select(c => new CategoryViewModel() { Id = c.Id, Name = c.Name });
             return View(viewModel);
         }

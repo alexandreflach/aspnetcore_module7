@@ -1,9 +1,9 @@
+using StoreBuild.Data;
+
 namespace StoreBuild.Domain.Products
 {
-    public class Product
+    public class Product : Entity
     {
-        public int Id { get; private set; }
-
         public string Name { get; private set; }
 
         public Category Category { get; private set; }
@@ -12,6 +12,10 @@ namespace StoreBuild.Domain.Products
 
         public decimal StockQuantity { get; private set; }
 
+        public Product(){
+
+        }
+        
         public Product(string name, Category category, decimal price, decimal stockQuantity)
         {
 
