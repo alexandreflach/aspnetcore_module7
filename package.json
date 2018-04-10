@@ -1,0 +1,14 @@
+{
+  "name": "module7",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/alexandreflach/aspnetcore_module7.git",
+  "author": "alexandreflach <contato@alexandreflach.com.br>",
+  "license": "MIT",
+  "scripts": {
+    "start": "dotnet run -p .\\src\\StoreBuild.Web\\StoreBuild.Web.csproj",
+    "migration": "cd .\\src\\StoreBuild.Data\\ && dotnet ef -s ..\\StoreBuild.Web\\StoreBuild.Web.csproj migrations add",
+    "migration-remove": "cd .\\src\\StoreBuild.Data\\ && dotnet ef -s ..\\StoreBuild.Web\\StoreBuild.Web.csproj migrations remove",
+    "database-update": "cd .\\src\\StoreBuild.Data\\ && dotnet ef -s ..\\StoreBuild.Web\\StoreBuild.Web.csproj database update"
+  }
+}
